@@ -46,6 +46,11 @@
   ],
   "provisioners": [
     {
+      "destination": "/tmp/packer-chef-solo",
+      "source": "cookbooks",
+      "type": "file"
+    },
+    {
       "destination": "/var/tmp/git-meta",
       "source": "tmp/git-meta",
       "type": "file"

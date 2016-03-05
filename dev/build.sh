@@ -13,5 +13,5 @@ cd "$DIR"
 cd ..
 
 make
-exec packer build -force -only=$BUILDER $TARGET
+exec packer build -debug -force -only=$BUILDER $TARGET
 
