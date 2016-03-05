@@ -1,6 +1,6 @@
 # Travis local virtualbox build
 
-This is an attempt to build a local travis vm test image for VirtualBox locally.
+This is an attempt to build a local travis vm test image for VirtualBox locally. It is a fork of [Travis packer templates](https://github.com/travis-ci/packer-templates).
 
 For the time being, only the ci-minimal version gets a new virtualbox builder.
 
