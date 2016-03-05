@@ -1,25 +1,45 @@
-# packer-templates
+# Travis local virtualbox build
 
-Collection of Packer templates used for various infrastructure layers.
+This is an attempt to build a local travis vm test image for VirtualBox locally.
 
-## don't panic
+For the time being, only the ci-minimal version gets a new virtualbox builder.
 
-Each Packer template JSON file is generated from a corresponding ERB-filtered
-YAML file.  The primary reason for this is YAML's support for comments,
-references, and generally more flexible data structures.  That being said, the
-structure of the single YAML document is analogous to the JSON structure
-expected by packer, and no further magic or indirection is expected or
-supported.
+## How to use?
 
-Editing a given JSON file directly is *doing it wrong* :no_entry_sign:.
-Instead, edit the YAML file and then run `make`, or alternatively use inline fd
-docs for a slightly faster feedback loop, e.g.:
+### Prerequisites
 
-``` bash
-packer build -only=docker <(bin/yml2json < ci-minimal.yml)
+* ruby
+* jq
+* [packer](https://www.packer.io/)
+* [vagrant](https://www.vagrantup.com/)
+* [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
+
+### Base image
+
+The packer template expects an ova image in the `boxes` directory. The file must be named `ubuntu.trusty.20150909.1.0.ova`.
+
+#### Generating the ova
+
+A vagrantfile is provided in the [boxes/vagrantfiles/trusty](boxes/vagrantfiles/trusty) directory.  
+Just vagrant up the directory, and, from VirtualBox, export the ova image.
+
+:warning: **Make sure to select OVA 2.0 format or packer won't be able to load the image**
+
+### Command line usage
+
+```shell
+dev/build.sh
 ```
 
-## env config bits
 
-Most of the templates in here require some env vars.  Take a look at
-[`.example.env`](./.example.env) for an example.
+## Why not use the docker build?
+
+Short answer: The vm will be closer to the Google compute image build.
+
+Long answer: @TBD (too lazy for now).
+
+### Difference with Travis build
+
+* No post-processing (may integrate vagrant later on if the images are OK)
+* Travis user uid and gid switched to 1100 (1000 on travis production)
+* All the customizations implied by the vagrant port, among which the VirtualBoxGuestAdditions for instance.

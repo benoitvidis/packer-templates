@@ -16,3 +16,4 @@ packer_cache
 /*.pem
 rabbitmqadmin
 .packer-template
+/.idea

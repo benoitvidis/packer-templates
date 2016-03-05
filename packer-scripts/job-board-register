@@ -46,6 +46,7 @@ main() {
   TAGS="${TAGS},os:${OS},group:${GROUP},dist:${DIST}"
   TAGS="${TAGS},packer_templates_branch:${PACKER_TEMPLATES_BRANCH}"
   TAGS="${TAGS},packer_templates_sha:${PACKER_TEMPLATES_SHA}"
+  TAGS="${TAGS},travis_cookbooks_url:${TRAVIS_COOKBOOKS_URL}"
   TAGS="${TAGS},travis_cookbooks_branch:${TRAVIS_COOKBOOKS_BRANCH}"
   TAGS="${TAGS},travis_cookbooks_sha:${TRAVIS_COOKBOOKS_SHA}"
 
