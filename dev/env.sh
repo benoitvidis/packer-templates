@@ -7,7 +7,7 @@ done
 export DEBUG=1
 export ATLAS_BUILD_ID="fake"
 export TRAVIS_COOKBOOKS_URL="https://github.com/benoitvidis/travis-cookbooks.git"
-export TRAVIS_COOKBOOKS_BRANCH='cmake'
+export TRAVIS_COOKBOOKS_BRANCH='dev'
 export EDITOR='vim'
 
 

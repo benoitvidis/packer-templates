@@ -46,11 +46,6 @@
   ],
   "provisioners": [
     {
-      "destination": "/tmp/packer-chef-solo",
-      "source": "cookbooks",
-      "type": "file"
-    },
-    {
       "destination": "/var/tmp/git-meta",
       "source": "tmp/git-meta",
       "type": "file"
@@ -112,9 +107,14 @@
       "type": "chef-solo"
     },
     {
+      "destination": "/tmp/packer-chef-solo",
+      "source": "cookbooks",
+      "type": "file"
+    },
+    {
       "execute_command": "{{ .Vars }} exec sudo -E -S bash '{{ .Path }}'",
       "environment_vars": [
-        "TRAVIS_OBFUSCATE_PASSWORD=1",
+        "TRAVIS_OBFUSCATE_PASSWORD=0",
         "JOB_BOARD_IMAGES_URL={{ user `job_board_images_url` }}",
         "IMAGE_NAME={{ user `gce_image_name` }}",
         "SPEC_SUITES=travis_ci_minimal",

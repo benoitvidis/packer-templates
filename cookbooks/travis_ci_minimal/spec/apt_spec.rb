@@ -25,6 +25,8 @@ describe 'apt installation' do
       its(:stdout) { should match(/http/) }
     end
 
+    command('sudo apt-get purge language-pack-pt')
+
     describe command('sudo apt-get install -y language-pack-pt') do
       its(:stdout) { should match(/Setting up /) }
     end
