@@ -106,6 +106,9 @@ provisioners:
   json: {}
   run_list:
   - recipe[travis_ci_mega]
+- type: file
+  source: cookbooks
+  destination: /tmp/packer-chef-solo
 - type: shell
   scripts:
   - packer-scripts/ensure-travis-user
